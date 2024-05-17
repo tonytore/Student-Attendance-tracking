@@ -9,7 +9,7 @@ function Dashboard(){
       setTheme('light')
     },[])
     return(
-        <div>Page</div>
+        <div className='md:ml-64'>Page</div>
     )
 }
 
