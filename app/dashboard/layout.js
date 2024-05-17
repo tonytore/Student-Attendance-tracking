@@ -9,7 +9,7 @@ function layout({children}){
       <SideNav/>
     </div>
     <div>
-      <div className='ml-64 w-full'>
+      <div className='ml-64'>
         <Header/>
       </div>
       {children}

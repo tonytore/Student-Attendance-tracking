@@ -6,7 +6,11 @@ import Image from 'next/image'
 export const Header = () => {
     const {user} = useKindeBrowserClient()
   return (
-    <div className='p-7 shadow-md'>
+    <div className='flex p-7 shadow-md justify-between'>
+    <div>
+
+    </div>
+    <div className=''>
          <Image
         src={user?.picture}
         width={35}
@@ -14,6 +18,7 @@ export const Header = () => {
         alt='user'
         className='rounded-full  shadow-md'
         />
+    </div>
     </div>
   )
 }
