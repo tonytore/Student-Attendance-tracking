@@ -21,7 +21,7 @@ export const SideNav = () => {
             id:1,
             name:"Student",
             icon:<GraduationCap />,
-            path:'/student'
+            path:'/dashboard/students'
         },
         {
             id:1,
