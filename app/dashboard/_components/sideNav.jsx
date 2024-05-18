@@ -37,7 +37,7 @@ export const SideNav = () => {
         }
     ]
   return (
-    <div className='h-screen shadow-md'>
+    <div className='h-screen flex flex-col justify-between items-center shadow-md'>
        <Image
        src={logo}
        width={180}
@@ -45,7 +45,7 @@ export const SideNav = () => {
        alt='logo'
        className='mx-auto my-3  p-7 shadow-md'
        />
-       <div className='mx-12 my-36'>
+       <div className='mx-12 flex-1  my-36'>
          {
             menuList.map((menu,i)=>(
              <Link
@@ -59,15 +59,15 @@ export const SideNav = () => {
          }
        </div>
 
-       <div className='flex justify-start items-end gap-3'>
+       <div className='flex justify-start items-center'>
         <Image
         src={user?.picture}
         width={35}
         height={35}
         alt='user'
-        className='rounded-full mx-8'
+        className='rounded-full mx-4'
         />
-       <div className='bg-red-400'>
+       <div className='text-sm'>
        <h2>{user?.given_name} {user?.family_name}</h2>
         <h2>{user?.email}</h2>
        </div>
