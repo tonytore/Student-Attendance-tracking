@@ -3,7 +3,7 @@ import {  NextResponse } from "next/server";
 
 export async function POST(request){
     try {
-        const { name, address, contact,} = await request.json();
+        const { name, address, contact} = await request.json();
 
     
 
