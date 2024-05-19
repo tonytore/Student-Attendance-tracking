@@ -8,7 +8,7 @@ export async function GET(request){
             }
         })
        
-        return NextResponse.json({grade:grade})
+        return NextResponse.json({grade})
     } catch (error) {
         console.log(error)
         return NextResponse.json(
