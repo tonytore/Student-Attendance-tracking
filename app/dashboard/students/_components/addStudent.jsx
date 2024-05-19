@@ -55,7 +55,7 @@ export default function Addstudent({grades}) {
             <select className='p-2 border rounded-lg'
             {...register(`grade`)}>t
             {
-            grades.map((item,i)=>(
+            grades.grade.map((item,i)=>(
                 <option key={i} value="6th">{item.grade}</option>
               )
             )}
