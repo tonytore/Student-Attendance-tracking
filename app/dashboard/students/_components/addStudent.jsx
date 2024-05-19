@@ -6,17 +6,16 @@ import {
   Dialog,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import {useForm} from 'react-hook-form'
 
 
-export default function Addstudent() {
+export default function Addstudent({grades}) {
+  console.log('grades',grades);
   const [open,setOpen] = useState(false)
   const {
     register,
@@ -54,10 +53,13 @@ export default function Addstudent() {
               Select Grade
             </Label>
             <select className='p-2 border rounded-lg'
-            {...register(`grade`)}>
-            <option value="6th">6th</option>
-             <option value="7yh">7th</option>
-             <option value="8th">8th</option>
+            {...register(`grade`)}>t
+            {
+            grades.map((item,i)=>(
+                <option key={i} value="6th">{item.grade}</option>
+              )
+            )}
+          
             </select>
           </div>
           <div className="grid grid-cols-4 items-center gap-4">

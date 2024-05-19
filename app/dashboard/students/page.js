@@ -1,13 +1,16 @@
 import React from 'react'
 import Addstudent from './_components/addStudent'
+import { getData } from '@/lib/getData'
 
 
-function Students (){
+async function Students (){
+  const grades = await getData('grades')
+  
   return (
   <div className='ml-64'>
       <h2 className='text-2xl p-4 font-semibold flex items-center justify-between'>
     Student
-    <Addstudent/>
+    <Addstudent grades={grades}/>
     </h2>
   </div>
   )
