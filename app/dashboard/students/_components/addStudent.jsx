@@ -28,7 +28,7 @@ export default function Addstudent({grades}) {
     formState:{errors}} = useForm()
 
      function onSubmit(data){
-        data.grade = grade
+        
         makePostRequest(
           setLoading,
           "api/students", // endpoint
