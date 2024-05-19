@@ -12,11 +12,15 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import {useForm} from 'react-hook-form'
+import { makePostRequest } from '@/lib/apiRequest'
+import SubmitButton from './submitButton'
 
 
 export default function Addstudent({grades}) {
-  console.log('grades',grades);
+
   const [open,setOpen] = useState(false)
+  const [isLoading , setLoading] = useState(false)
+
   const {
     register,
     reset,
@@ -24,8 +28,16 @@ export default function Addstudent({grades}) {
     formState:{errors}} = useForm()
 
      function onSubmit(data){
-        console.log(data);
+        data.grade = grade
+        makePostRequest(
+          setLoading,
+          "api/students", // endpoint
+          data,
+          "Student",    // resourceName
+        
+          )
         reset()
+        console.log(data);
  }
   return (
    <div>
@@ -43,7 +55,7 @@ export default function Addstudent({grades}) {
               Full Name
             </Label>
             <Input
-             {...register(`fullname`, { required: true })}
+             {...register(`name`, { required: true })}
               placeholder="Ex. Jhon Carry"
               className="col-span-3"
             />
@@ -86,7 +98,8 @@ export default function Addstudent({grades}) {
 
           <div className='flex gap-2 items-center justify-end'>
           <Button variant="shadow" onClick={()=>setOpen(false)}>cancel</Button>
-          <Button type="submit">Save</Button>
+          <SubmitButton isLoading={isLoading} buttonTitle='Save' 
+          loadingButtonTitle='Creating students please wait...'/>
           </div>
         </div>
        
