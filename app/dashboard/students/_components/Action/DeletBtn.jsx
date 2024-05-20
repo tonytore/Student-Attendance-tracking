@@ -7,7 +7,7 @@ import { useState } from "react";
 import toast, { LoaderIcon } from "react-hot-toast";
 import Swal from "sweetalert2";
 
-export default function DeleteBtn({endpoint,title }) {
+export default function DeleteBtn({endpoint }) {
  
   const [loading, setLoading] = useState(false);
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;

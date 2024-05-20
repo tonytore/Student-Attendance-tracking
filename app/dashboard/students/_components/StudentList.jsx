@@ -21,7 +21,7 @@ export const StudentList = ({ students })=> {
 
         return (
          <div>
-           <DeleteBtn endpoint={students.id} title={students.name}/>
+           <DeleteBtn endpoint={`/students/${students.id}`} />
           
          </div>
         )
