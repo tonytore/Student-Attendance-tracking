@@ -14,12 +14,19 @@ import { Label } from "@/components/ui/label"
 import {useForm} from 'react-hook-form'
 import { makePostRequest } from '@/lib/apiRequest'
 import SubmitButton from './submitButton'
+import { useRouter } from 'next/navigation'
+import { LoaderIcon } from 'react-hot-toast'
 
 
 export default function Addstudent({grades}) {
-
+  
+  const router = useRouter()
   const [open,setOpen] = useState(false)
   const [isLoading , setLoading] = useState(false)
+
+  function redirect(){
+    router.push('/dashboard/students')
+  }
 
   const {
     register,
@@ -27,21 +34,21 @@ export default function Addstudent({grades}) {
     handleSubmit,
     formState:{errors}} = useForm()
 
-     function onSubmit(data){
+    async function onSubmit(data){
         
         makePostRequest(
           setLoading,
           "api/students", // endpoint
           data,
           "Student",    // resourceName
-        
+          redirect
           )
         reset()
         console.log(data);
  }
   return (
    <div>
-     <Button onClick={()=>setOpen(true)}>Add Students</Button>
+     <Button className="bg-purple-600" onClick={()=>setOpen(true)}>Add Students</Button>
      <Dialog open={open}>
      
       <DialogContent className="sm:max-w-2xl">
@@ -60,26 +67,13 @@ export default function Addstudent({grades}) {
               className="col-span-3"
             />
           </div>
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label className="text-right">
-              Select Grade
-            </Label>
-            <select className='p-2 border rounded-lg'
-            {...register(`grade`)}>t
-            {
-            grades.grade.map((item,i)=>(
-                <option key={i} value="6th">{item.grade}</option>
-              )
-            )}
-          
-            </select>
-          </div>
+                  
           <div className="grid grid-cols-4 items-center gap-4">
             <Label className="text-right">
               Contact Number
             </Label>
             <Input
-            type="number"
+            type="tel"
             {...register(`contact`)}
               placeholder="Ex. 84302843256 "
               className="col-span-3"
@@ -97,9 +91,9 @@ export default function Addstudent({grades}) {
           </div>
 
           <div className='flex gap-2 items-center justify-end'>
-          <Button variant="shadow" onClick={()=>setOpen(false)}>cancel</Button>
+          <Button className="mt-4" variant="shadow" onClick={()=>setOpen(false)}>cancel</Button>
           <SubmitButton isLoading={isLoading} buttonTitle='Save' 
-          loadingButtonTitle='Creating students please wait...'/>
+          loadingButtonTitle={<LoaderIcon className='animate-spin'/>}/>
           </div>
         </div>
        

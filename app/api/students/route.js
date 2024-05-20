@@ -33,7 +33,7 @@ export async function GET(request){
     try {
         const students = await db.students.findMany({
             orderBy:{
-                createdAt : "desc"
+                createdAt : "asc"
             }
         })
        
