@@ -58,7 +58,7 @@ export const SideNav = () => {
              <Link
              key={i}
              href={menu.path}
-             className={`flex p-5 gap-2 hover:bg-purple-400 rounded-lg
+             className={`flex p-5 gap-2  rounded-lg my-2
              ${path == menu.path && ' bg-purple-700'}
              `}
              >
