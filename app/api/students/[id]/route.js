@@ -6,7 +6,7 @@ import {  NextResponse } from "next/server";
 export async function GET(request,{params}){
     const {id} = params
     try {
-        const students= await db.student.findUnique({
+        const students= await db.students.findUnique({
             where:{
                 id,
             },
