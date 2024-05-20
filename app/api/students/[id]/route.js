@@ -2,6 +2,31 @@ import db from '@/app/lib/db'
 import {  NextResponse } from "next/server";
 
 
+export async function GET(request,{params}){
+    const {id} = params
+    try {
+        const students= await db.student.findUnique({
+            where:{
+                id,
+            },
+          
+        });
+   
+        return NextResponse.json(students)
+    } catch (error) {
+        console.log(error)
+        return NextResponse.json(
+            {
+                message:"student failed to get ",
+                error,
+            },
+            {
+                status:500
+            }
+        )
+    }
+    }
+
    export async function DELETE(request,{params:{id}}) {
 
 
