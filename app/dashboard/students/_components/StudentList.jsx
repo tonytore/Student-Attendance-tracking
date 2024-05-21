@@ -16,13 +16,17 @@ const paginationPageSizeSelector = [10, 20, 50, 100];
 
 export const StudentList = ({ students })=> {
     const [searchInput,setSearchInput] = useState()
-    
+   
+    const id = students.map((student,i)=>{
+        return <p key={i}>{student.id}</p>
+    })
+    console.log("id",id);
     const CustomButtons = (props) => {
+        console.log(props.data.id)
 
         return (
          <div>
-           <DeleteBtn endpoint={`/students/${students.id}`} />
-          
+                <DeleteBtn endpoint={`/students/${props?.data?.id}`} />    
          </div>
         )
       }
