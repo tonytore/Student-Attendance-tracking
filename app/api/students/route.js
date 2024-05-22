@@ -29,13 +29,13 @@ export async function POST(request){
     }
 }
 
-// export async function GET(request){
-//     try {
-//         const students = await db.students.findMany({
-//             orderBy:{
-//                 createdAt : "desc"
-//             }
-//         })
+export async function GET(request){
+    try {
+        const students = await db.students.findMany({
+            orderBy:{
+                createdAt : "desc"
+            }
+        })
        
         return NextResponse.json(students)
     } catch (error) {
