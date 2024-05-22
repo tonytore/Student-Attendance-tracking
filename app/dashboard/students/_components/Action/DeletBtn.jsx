@@ -7,7 +7,7 @@ import { useState } from "react";
 import toast, { LoaderIcon } from "react-hot-toast";
 import Swal from "sweetalert2";
 
-export default function DeleteBtn({id }) {
+export default function DeleteBtn({endpoint }) {
  
   const [loading, setLoading] = useState(false);
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
@@ -25,7 +25,7 @@ export default function DeleteBtn({id }) {
       confirmButtonText: "Yes, delete it!",
     }).then(async (result) => {
       if (result.isConfirmed) {
-        const res = await fetch(`${baseUrl}/api/students?id=${id}`, {
+        const res = await fetch(`${baseUrl}/api/${endpoint}`, {
           method: "DELETE",
         });
         console.log(res);

@@ -24,7 +24,7 @@ export const StudentList = ({ students })=> {
         try {
             return (
          <div>
-                <DeleteBtn id={`/${props?.data?.id}`} />    
+                <DeleteBtn endpoint={`/students?id=${props?.data?.id}`} />    
          </div>
         )
         } catch (error) {
