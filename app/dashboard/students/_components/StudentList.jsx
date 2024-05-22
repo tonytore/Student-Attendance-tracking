@@ -16,19 +16,29 @@ const paginationPageSizeSelector = [10, 20, 50, 100];
 
 export const StudentList = ({ students })=> {
     const [searchInput,setSearchInput] = useState()
+   console.log("students information",students);
    
-    const id = students.map((student,i)=>{
-        return <p key={i}>{student.id}</p>
-    })
-    console.log("id",id);
     const CustomButtons = (props) => {
-        console.log(props.data.id)
+        
 
-        return (
+        try {
+            return (
          <div>
-                <DeleteBtn endpoint={`/students/${props?.data?.id}`} />    
+                <DeleteBtn id={`/${props?.data?.id}`} />    
          </div>
         )
+        } catch (error) {
+            console.log(error)
+            return NextResponse.json(
+                {
+                    message:"customDeleteBtn failed",
+                    error,
+                },
+                {
+                    status:500
+                }
+            )
+        }
       }
   
     const [colDefs, setColDefs] = useState([

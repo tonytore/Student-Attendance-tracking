@@ -25,7 +25,7 @@ export default function DeleteBtn({endpoint }) {
       confirmButtonText: "Yes, delete it!",
     }).then(async (result) => {
       if (result.isConfirmed) {
-        const res = await fetch(`${baseUrl}/api/${endpoint}`, {
+        const res = await fetch(`${baseUrl}/api/students/${endpoint}`, {
           method: "DELETE",
         });
         console.log(res);
