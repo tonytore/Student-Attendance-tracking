@@ -34,13 +34,13 @@ export const SideNav = () => {
             id:1,
             name:"Attendance",
             icon:<BatteryMedium />,
-            path:'/attendance'
+            path:'/dashboard/attendance'
         },
         {
             id:1,
             name:"Setting",
             icon:<Settings />,
-            path:'/setting'
+            path:'/dashboard/setting'
         }
     ]
   return (
