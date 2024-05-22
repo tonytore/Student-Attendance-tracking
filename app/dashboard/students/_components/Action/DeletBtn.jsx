@@ -32,7 +32,7 @@ export default function DeleteBtn({endpoint }) {
         if (res.ok) {
           router.refresh();
           setLoading(false);
-          toast.success(`${title} Deleted Successfully`);
+          toast.success(`Student Deleted Successfully`);
           Swal.fire({
             title: "Deleted!",
             text: "Your file has been deleted.",

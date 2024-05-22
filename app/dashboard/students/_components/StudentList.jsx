@@ -7,6 +7,7 @@ import "ag-grid-community/styles/ag-theme-quartz.css";
 import { Button } from '@/components/ui/button';
 import { Search, Trash } from 'lucide-react';
 import DeleteBtn from './Action/DeletBtn';
+import { NextResponse } from 'next/server';
 
 
 const pagination = true;
@@ -16,10 +17,9 @@ const paginationPageSizeSelector = [10, 20, 50, 100];
 
 export const StudentList = ({ students })=> {
     const [searchInput,setSearchInput] = useState()
-   console.log("students information",students);
+   
    
     const CustomButtons = (props) => {
-        
 
         try {
             return (
