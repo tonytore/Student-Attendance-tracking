@@ -5,10 +5,7 @@ export async function POST(request){
     try {
         const { name, address, contact} = await request.json();
 
-    
-
-        // const newBanner = {title,imageUrl,link,isActive}
-        const newBanner = await db.students.create({
+        const students = await db.students.create({
             data:{
                 name,
                 address,
@@ -17,12 +14,12 @@ export async function POST(request){
             },
         })
        
-        return NextResponse.json(newBanner)
+        return NextResponse.json(students)
     } catch (error) {
         console.log(error);
         return NextResponse.json(
             {
-                message: "Failed to create banner",
+                message: "Failed to create students",
                 error,
             },{status:500}
         )
