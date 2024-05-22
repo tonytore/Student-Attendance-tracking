@@ -9,13 +9,13 @@ const SelectGrade = async () => {
     <div className='p-3 border rounded-md'>
         
       <select>
-        {
+        {/* {
           grades.grade.map((item, i) => {
 
             <option className='' key={i} value={item.grade}>{item.grade}</option>
 
           })
-          }
+          } */}
       </select>
 
     </div>
