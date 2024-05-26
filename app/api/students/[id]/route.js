@@ -1,45 +1,24 @@
-import db from "@/lib/db"
+
+import db from "@/lib/db";
 import {  NextResponse } from "next/server";
 
-export async function POST(request){
-    try {
-        const { name, address, contact} = await request.json();
 
-        const students = await db.students.create({
-            data:{
-                name,
-                address,
-                contact,
-                
+export async function GET(request,{params}){
+    const {id} = params
+    try {
+        const students= await db.students.findUnique({
+            where:{
+                id,
             },
-        })
-       
-        return NextResponse.json(students)
-    } catch (error) {
-        console.log(error);
-        return NextResponse.json(
-            {
-                message: "Failed to create students",
-                error,
-            },{status:500}
-        )
-    }
-}
-
-export async function GET(request){
-    try {
-        const students = await db.students.findMany({
-            orderBy:{
-                createdAt : "asc"
-            }
-        })
-       
+          
+        });
+   
         return NextResponse.json(students)
     } catch (error) {
         console.log(error)
         return NextResponse.json(
             {
-                message:"student failed",
+                message:"student failed to get ",
                 error,
             },
             {
@@ -49,15 +28,11 @@ export async function GET(request){
     }
     }
 
-    export async function DELETE(request) {
+    export async function DELETE(request, { params: { id } }) {
         try {
-            const searchParams = request.nextUrl.searchParams
-            const id = searchParams.get('id')
-            const studentId = parseInt(id)
-            console.log(studentId);
           const students = await db.students.findUnique({
             where: {
-              id:studentId,
+              id,
             },
           });
           if (!students) {
@@ -72,7 +47,7 @@ export async function GET(request){
       
           const deletedStudents = await db.students.delete({
             where: {
-              id: studentId,
+              id,
             },
           });
         
@@ -92,4 +67,7 @@ export async function GET(request){
             }
           );
         }
-      }    
+      }
+
+
+        

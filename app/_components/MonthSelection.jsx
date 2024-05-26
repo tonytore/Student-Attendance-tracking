@@ -12,9 +12,10 @@ import moment from 'moment'
 import { CalendarDays } from 'lucide-react'
 import { Calendar } from "@/components/ui/calendar"
 
-const monthSelection = () => {
+const monthSelection = ({selectedMonth}) => {
     const nextMonth = addMonths(new Date, 0)
     const [month, setMonth] = useState(nextMonth)
+   
 
     return (
         <div className=''>
@@ -29,7 +30,7 @@ const monthSelection = () => {
                     <Calendar
                         mode="single"
                         month={month}
-                        onMonthChange={(value)=>setMonth(value)}
+                        onMonthChange={(value)=>{ setMonth(value);selectedMonth(value)}}
                         className="flex flex-1 justify-center"
                     />
                 </PopoverContent>

@@ -26,6 +26,7 @@ export default function Addstudent({grades}) {
 
   function redirect(){
     router.push('/dashboard/students')
+    
   }
 
   const {
@@ -91,7 +92,7 @@ export default function Addstudent({grades}) {
           </div>
 
           <div className='flex gap-2 items-center justify-end'>
-          <Button className="mt-4" variant="shadow" onClick={()=>setOpen(false)}>cancel</Button>
+          <Button className="mt-4" variant="shadow" onClick={()=>{return setOpen(false) }}>cancel</Button>
           <SubmitButton isLoading={isLoading} buttonTitle='Save' 
           loadingButtonTitle={<LoaderIcon className='animate-spin'/>}/>
           </div>

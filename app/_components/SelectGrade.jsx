@@ -1,25 +1,19 @@
+
+import { getData } from '@/lib/getData';
 import React from 'react'
-import { getData } from '@/lib/getData'
+import GradeList from './GradeList';
 
 
-const SelectGrade = async () => {
+const SelectGrade = async ({selectedGrade}) => {
   const grades = await getData('grades')
-  console.log(grades);
-  return (
-    <div className='p-3 border rounded-md'>
-        
-      <select>
-        {/* {
-          grades.grade.map((item, i) => {
+   
 
-            <option className='' key={i} value={item.grade}>{item.grade}</option>
-
-          })
-          } */}
-      </select>
-
-    </div>
-  )
+return (
+<div>
+<GradeList selectedGrade={selectedGrade} grades={grades}/>
+</div>
+ 
+)
 }
 
 export default SelectGrade

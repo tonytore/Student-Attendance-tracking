@@ -1,7 +1,6 @@
-"use client"
+"use client";
 
 import { LoginLink, RegisterLink } from "@kinde-oss/kinde-auth-nextjs";
-import Image from "next/image";
 
 export default function Home() {
   return (
@@ -9,7 +8,6 @@ export default function Home() {
       <h1>student attendance tracking</h1>
       <LoginLink>Sign in</LoginLink>
       <RegisterLink>Sign up</RegisterLink>
-
     </main>
   );
 }
