@@ -53,11 +53,10 @@ export async function GET(request){
         try {
             const searchParams = request.nextUrl.searchParams
             const id = searchParams.get('id')
-            const studentId = parseInt(id)
-            console.log(studentId);
+            
           const students = await db.students.findUnique({
             where: {
-              id:studentId,
+              id,
             },
           });
           if (!students) {
@@ -72,7 +71,7 @@ export async function GET(request){
       
           const deletedStudents = await db.students.delete({
             where: {
-              id: studentId,
+              id,
             },
           });
         
