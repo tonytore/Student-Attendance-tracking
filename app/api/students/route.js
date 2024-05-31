@@ -53,10 +53,10 @@ export async function GET(request){
         try {
             const searchParams = request.nextUrl.searchParams
             const id = searchParams.get('id')
-            const studentId = parseInt(id)
+            
           const students = await db.students.findUnique({
             where: {
-              id:studentId,
+              id,
             },
           });
           if (!students) {
