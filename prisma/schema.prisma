@@ -16,7 +16,11 @@ datasource db {
 
 model Grades {
   id      String      @id @default(uuid())
-  grade   String  
+  grade   String 
+
+  attendanceId String  
+  attendance   Attendance?
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
@@ -26,16 +30,24 @@ model Students {
   name String
   address String
   contact String
+
+  attendanceId String
+  attendance   Attendance[] 
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
 model Attendance {
     id      String      @id @default(uuid())
-  studentId String
   present Boolean @default(false)
   day Int 
-  date Int
+ 
+  studentId String  
+  student   Students @relation(fields: [studentId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  gradeId String  @unique 
+  grade   Grades @relation(fields: [gradeId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
