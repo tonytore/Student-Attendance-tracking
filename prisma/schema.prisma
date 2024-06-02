@@ -35,7 +35,7 @@ model Attendance {
   studentId String
   present Boolean @default(false)
   day Int 
-  date String
+  date Int
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
