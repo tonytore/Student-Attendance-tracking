@@ -13,7 +13,7 @@ export async function GET(request){
         console.log(error)
         return NextResponse.json(
             {
-                message:"banner failed",
+                message:"grades failed",
                 error,
             },
             {
