@@ -2,18 +2,18 @@ import db from "@/lib/db"
 import {  NextResponse } from "next/server";
 export async function GET(request){
     try {
-        const grade = await db.grades.findMany({
+        const attendance = await db.attendance.findMany({
             orderBy:{
                 createdAt : "desc"
             }
         })
        
-        return NextResponse.json(grade)
+        return NextResponse.json(attendance)
     } catch (error) {
         console.log(error)
         return NextResponse.json(
             {
-                message:"grades failed",
+                message:"attendance failed",
                 error,
             },
             {
