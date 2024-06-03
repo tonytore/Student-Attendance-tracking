@@ -5,7 +5,8 @@ export async function GET(request){
         const attendance = await db.attendance.findMany({
             orderBy:{
                 createdAt : "desc"
-            }
+            },
+            include: { student: true },
         })
        
         return NextResponse.json(attendance)
