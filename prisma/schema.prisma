@@ -35,6 +35,7 @@ model Students {
 
 model Attendance {
     id      String      @id @default(uuid())
+    studentId String
   present Boolean @default(false)
   day Int 
  
