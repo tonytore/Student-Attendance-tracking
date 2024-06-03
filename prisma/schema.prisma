@@ -29,6 +29,8 @@ model Students {
   address String
   contact String
 
+  attendances Attendance[]
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
@@ -38,6 +40,8 @@ model Attendance {
     studentId String
   present Boolean @default(false)
   day Int 
+
+  student   Students  @relation(fields: [studentId], references: [id])
  
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
